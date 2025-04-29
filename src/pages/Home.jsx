@@ -2,6 +2,7 @@ import { useState } from "react";
 import About from "./About";
 import Contect from "./Contect";
 import Service from "./Service";
+import Products from "./ProductList";
 
 function HomePage() {
   const [count, setcount] = useState(15);
@@ -30,19 +31,23 @@ function HomePage() {
 
   return (
     <div className="home">
-      <h2>Header : {count}</h2>
       <h1>Welcome to the Home Page</h1>
-      <p>This is the home page of our application.</p>
       <h1>Data: {count}</h1>
       <button onClick={updatecount}>Click me Update data {count}</button>
 
-      <About />
+      {/* <About />
       <h1>my Project finaly uplaod in github</h1>
 
       <Contect counter={count} />
       <Service userdata={userdata} />
 
-      <button onClick={userdataupdate}>Update user data</button>
+      <button onClick={userdataupdate}>Update user data</button> */}
+
+      <Products />
+
+
+
+      
     </div>
   );
 }

@@ -18,6 +18,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -40,9 +41,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -53,9 +56,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
@@ -68,7 +73,7 @@ button:focus-visible {
 /* Home Css  */
 
 
-.home{
+.home {
 
   text-align: center;
   display: flex;
@@ -76,4 +81,85 @@ button:focus-visible {
   align-items: center;
   flex-direction: column;
   /* width: 100%; */
+}
+
+
+/* Product CSS  */
+
+.product-list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+
+.product-card {
+  width: 300px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 10px 14px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+  background-color: #fff;
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-details {
+  padding: 16px;
+}
+
+.product-title {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+.product-category{
+  font-weight: 700;
+  color: #007bff;
+  text-align: left;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 16px;
+  height: 20px;
+  height: 40px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-price {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.add-to-cart-btn {
+  padding: 8px 12px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #0056b3;
 }

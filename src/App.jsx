@@ -6,7 +6,6 @@ function App() {
   
   <Home />
 
-      <h1> Server Changes mene kiye hai </h1>
   </>
   );
 }
