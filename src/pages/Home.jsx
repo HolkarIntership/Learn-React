@@ -3,6 +3,7 @@ import About from "./About";
 import Contect from "./Contect";
 import Service from "./Service";
 import Products from "./ProductList";
+import Counter from "./Counter";
 
 function HomePage() {
   const [count, setcount] = useState(15);
@@ -20,7 +21,6 @@ function HomePage() {
     man: true,
   });
 
-  
   function userdataupdate() {
     setuserdata({
       name: "Priya Singh",
@@ -43,11 +43,9 @@ function HomePage() {
 
       <button onClick={userdataupdate}>Update user data</button> */}
 
-      <Products />
+      {/* <Products /> */}
 
-
-
-      
+      <Counter />
     </div>
   );
 }

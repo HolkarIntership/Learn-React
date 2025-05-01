@@ -1,7 +1,6 @@
 import React from "react";
 
 const ProductCard = ({ product }) => {
-//   console.log("product.....", product.title);
 
   return (
     <div className="product-card" key={product.id}>
