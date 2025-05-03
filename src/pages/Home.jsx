@@ -43,9 +43,9 @@ function HomePage() {
 
       <button onClick={userdataupdate}>Update user data</button> */}
 
-      {/* <Products /> */}
+      <Products />
 
-      <Counter />
+      {/* <Counter /> */}
     </div>
   );
 }

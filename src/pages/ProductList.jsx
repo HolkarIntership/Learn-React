@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 
 import ProducatList from "../utils/Data";
 import ProductCard from "../Components/ProductCard";
@@ -14,8 +14,6 @@ const ProductList = () => {
   const filterdata = products.filter((val) => {
     return val.title.toLowerCase().includes(searchData);
   });
-
-  console.log("filterdata....", filterdata);
 
   return (
     <div>
@@ -38,16 +36,13 @@ const ProductList = () => {
         />
       </div>
       <div className="product-list">
-      {filterdata.length > 0 ? (
+        {filterdata.length > 0 ? (
           filterdata.map((val, index) => {
             return <ProductCard product={val} key={index} />;
           })
         ) : (
-          <p>
-            No Product Found 
-          </p>
-        )} 
-
+          <p>No Product Found</p>
+        )}
       </div>
       {/* <div className="product-list">
         {products.map((val, index) => {
