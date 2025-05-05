@@ -1,5 +1,14 @@
 import { useCallback, useId, useMemo, useRef, useState } from "react";
 import Home from "./pages/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/Home";
+import About from "./pages/About";
+import Service from "./pages/Service";
+import Contect from "./pages/Contect";
+import Counter from "./pages/Counter";
+import ProductList from "./pages/ProductList";
+import NotFound from "./pages/NotFound";
+import Navbar from "./Components/Layout/Navbar";
 
 function App() {
   // const apidata = fetch("https://jsonplaceholder.typicode.com/todos/1")
@@ -45,18 +54,20 @@ function App() {
     <>
       {/* <Home /> */}
 
-      {/* 
-      <input type="text" ref={first2} />
-      <h1 ref={first}>Heloo</h1>
+      <BrowserRouter>
+        <Navbar />
+        <Routes >
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/service" element={<Service />} />
+          <Route path="/contact" element={<Contect />} />
+          <Route path="/counter" element={<Counter />} />
+          <Route path="/product" element={<ProductList />} />
+          <Route path="/*" element={<NotFound />} />
 
-      <button onClick={Reffun}>CLick</button> */}
-
-      <div>
-        <h1>count {counter}</h1>
-      </div>
-
-      <button onClick={callback}>Click</button>
-      <button>Use Memo Click</button>
+        </Routes>
+        {/* <Home /> */}
+      </BrowserRouter>
     </>
   );
 }

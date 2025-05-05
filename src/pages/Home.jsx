@@ -4,6 +4,8 @@ import Contect from "./Contect";
 import Service from "./Service";
 import Products from "./ProductList";
 import Counter from "./Counter";
+import Navbar from "../Components/Layout/Navbar";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [count, setcount] = useState(15);
@@ -11,7 +13,7 @@ function HomePage() {
   function updatecount() {
     setcount(count + 2);
 
-    console.log("checked", count);
+    // console.log("checked", count);
   }
 
   const [userdata, setuserdata] = useState({
@@ -30,7 +32,9 @@ function HomePage() {
   }
 
   return (
-    <div className="home">
+    <main className="container">
+
+
       <h1>Welcome to the Home Page</h1>
       <h1>Data: {count}</h1>
       <button onClick={updatecount}>Click me Update data {count}</button>
@@ -43,10 +47,15 @@ function HomePage() {
 
       <button onClick={userdataupdate}>Update user data</button> */}
 
-      <Products />
+      {/* <Products /> */}
+
+<br />
+      <Link to="/contact">contact again</Link>
+<br />
+      <a href="/contact">CLick me Go to Contact Page</a>
 
       {/* <Counter /> */}
-    </div>
+    </main>
   );
 }
 

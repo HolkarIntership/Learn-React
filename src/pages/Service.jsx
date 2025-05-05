@@ -5,11 +5,10 @@ const Service = ({ userdata }) => {
 
   return (
     <div>
-      Service
-      <h2>user name {userdata.name}</h2>
-      <h2>user Age {userdata.age ? userdata.age : 20}</h2>
-      <h2>user Address {userdata.address}</h2>
-      <h2>user Gender: {userdata.man ? "Man" : "Female"}</h2>
+      <h2>name {userdata?.name} Raju </h2>
+      <h2>Age {userdata?.age ? userdata?.age : 20}</h2>
+      <h2>Address {userdata?.address} Indore</h2>
+      <h2>Gender: {userdata?.man ? "Man" : "Female"}</h2>
     </div>
   );
 };
