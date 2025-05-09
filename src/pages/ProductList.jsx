@@ -1,11 +1,20 @@
-import React, { useId, useState } from "react";
+import React, { useEffect, useId, useState } from "react";
 
 import ProducatList from "../utils/Data";
 import ProductCard from "../Components/ProductCard";
 
 const ProductList = () => {
-  const [products, setProducts] = useState(ProducatList);
+  const [products, setProducts] = useState([]);
   const [searchData, setSearchData] = useState("");
+
+
+  useEffect(() => {
+
+    fetch("https://dummyjson.com/products")
+      .then((res) => res.json())
+      .then((res) => setProducts(res.products))
+      .catch((err) => console.log(err));
+  }, [])
 
   function inputval(param) {
     setSearchData(param.target.value);
@@ -14,6 +23,8 @@ const ProductList = () => {
   const filterdata = products.filter((val) => {
     return val.title.toLowerCase().includes(searchData);
   });
+
+
 
   return (
     <div>
@@ -30,15 +41,15 @@ const ProductList = () => {
             padding: "5px",
           }}
           onChange={inputval}
-          // onChange={(event) => {
-          //   setSearchData(event.target.value);
-          // }}
+        // onChange={(event) => {
+        //   setSearchData(event.target.value);
+        // }}
         />
       </div>
       <div className="product-list">
         {filterdata.length > 0 ? (
           filterdata.map((val, index) => {
-            return <ProductCard product={val} key={index} />;
+            return <ProductCard product={val} key={index}  />;
           })
         ) : (
           <p>No Product Found</p>

@@ -9,6 +9,9 @@ import Counter from "./pages/Counter";
 import ProductList from "./pages/ProductList";
 import NotFound from "./pages/NotFound";
 import Navbar from "./Components/Layout/Navbar";
+import ProductDetails from "./pages/ProductDetails";
+import New from "./pages/New";
+import Login from "./Components/Auth/Login";
 
 function App() {
   // const apidata = fetch("https://jsonplaceholder.typicode.com/todos/1")
@@ -50,6 +53,8 @@ function App() {
 
   console.log("memo", memo);
 
+  
+
   return (
     <>
       {/* <Home /> */}
@@ -63,6 +68,10 @@ function App() {
           <Route path="/contact" element={<Contect />} />
           <Route path="/counter" element={<Counter />} />
           <Route path="/product" element={<ProductList />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/login" element={<Login />} />
+          {/* <Route path="/ddddddd" element={<New />} /> */}
+
           <Route path="/*" element={<NotFound />} />
 
         </Routes>

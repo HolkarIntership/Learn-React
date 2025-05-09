@@ -1,52 +1,76 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
-    return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-            <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/">Navbar</NavLink>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to='/about'>About us</NavLink>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <NavLink className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
-                            </NavLink>
-                            <ul className="dropdown-menu">
-                                <li><NavLink className="dropdown-item" to="/counter">Counter</NavLink></li>
-                                <li><NavLink className="dropdown-item" to="/product">Product List</NavLink></li>
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-                            </ul>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link " to='/service' aria-disabled="true"  >Service</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className={({ isActive }) => isActive ? "red nav-link" : "blue nav-link"} to='/contact'>Contact</NavLink>
+  return (
+    <nav className="bg-white shadow-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+          <NavLink to="/" className="text-xl font-bold text-blue-600">Navbar</NavLink>
 
-                            <NavLink to="/contact" style={({ isActive }) => ({
-                                color: isActive ? "red" : "black",
-                            })}  >
-                                hyyy
-                            </NavLink>
-                        </li>
-                    </ul>
+          <div className="md:hidden">
+            <button onClick={() => setMenuOpen(!menuOpen)} className="text-gray-700 focus:outline-none">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {menuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
 
-                    <button style={{ background: "" }} className="btn btn-outline-success" type="submit">Submit</button>
+          <div className={`md:flex space-x-6 items-center ${menuOpen ? 'block' : 'hidden'} md:block`}>
+            <NavLink to="/" className="text-gray-700 hover:text-blue-500">Home</NavLink>
+            <NavLink to="/about" className="text-gray-700 hover:text-blue-500">About Us</NavLink>
+
+            <div className="relative">
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="text-gray-700 hover:text-blue-500 focus:outline-none"
+              >
+                Dropdown
+              </button>
+              {isDropdownOpen && (
+                <div className="absolute bg-white border rounded-md mt-2 shadow-md z-10">
+                  <NavLink to="/counter" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Counter</NavLink>
+                  <NavLink to="/product" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Product List</NavLink>
                 </div>
+              )}
             </div>
-        </nav>
-    )
-}
 
-export default Navbar
+            <NavLink to="/service" className="text-gray-700 hover:text-blue-500">Service</NavLink>
+
+            <div className="flex space-x-2 items-center">
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  `${isActive ? "text-red-600" : "text-gray-700"} hover:text-blue-500`
+                }
+              >
+                Contact
+              </NavLink>
+              <NavLink
+                to="/contact"
+                style={({ isActive }) => ({
+                  color: isActive ? "red" : "black"
+                })}
+              >
+                hyyy
+              </NavLink>
+            </div>
+
+            <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;

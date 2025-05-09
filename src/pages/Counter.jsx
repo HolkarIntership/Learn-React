@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Counter = () => {
   const [count, setCount] = useState(0);
-  
-
+  const navigate = useNavigate();
   function add() {
     setCount(count + 1);
     console.log("add", count);
+navigate("/");
   }
 
   function remove() {

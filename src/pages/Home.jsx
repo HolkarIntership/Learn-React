@@ -6,6 +6,7 @@ import Products from "./ProductList";
 import Counter from "./Counter";
 import Navbar from "../Components/Layout/Navbar";
 import { Link } from "react-router-dom";
+import Login from "../Components/Auth/Login";
 
 function HomePage() {
   const [count, setcount] = useState(15);
@@ -34,6 +35,7 @@ function HomePage() {
   return (
     <main className="container">
 
+      <Link to={'/login'}>Got to login</Link>
 
       <h1>Welcome to the Home Page</h1>
       <h1>Data: {count}</h1>
@@ -49,10 +51,20 @@ function HomePage() {
 
       {/* <Products /> */}
 
-<br />
+      <br />
       <Link to="/contact">contact again</Link>
-<br />
+      <br />
       <a href="/contact">CLick me Go to Contact Page</a>
+
+
+      <br />
+      <br />
+      <br />
+      <a href="/ddddddd">Click me Go to new page </a>
+
+
+
+
 
       {/* <Counter /> */}
     </main>
