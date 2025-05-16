@@ -12,6 +12,8 @@ import Navbar from "./Components/Layout/Navbar";
 import ProductDetails from "./pages/ProductDetails";
 import New from "./pages/New";
 import Login from "./Components/Auth/Login";
+import PrativeRoute from "./Components/PrativeRoute";
+import Signup from "./Components/Auth/Signup";
 
 function App() {
   // const apidata = fetch("https://jsonplaceholder.typicode.com/todos/1")
@@ -51,25 +53,67 @@ function App() {
     return counter + 1;
   }, [counter]);
 
-  console.log("memo", memo);
+  const [auth, setAuth] = useState(false);
 
-  
+  const privateroute = [
+
+    {
+      path: "/service",
+      element: <Service />,
+    },
+    {
+      path: "/contact",
+      element: <Contect />,
+    },
+    {
+      path: "/counter",
+      element: <Counter />,
+    },
+    {
+      path: "/product",
+      element: <ProductList />,
+    },
+    {
+      path: "/product/:id",
+      element: <ProductDetails />,
+    }
+  ];
+
 
   return (
     <>
       {/* <Home /> */}
 
       <BrowserRouter>
-        <Navbar />
+        <Navbar setAuth={setAuth} />
         <Routes >
+
+
+          <Route element={<PrativeRoute auth={auth} />}>
+            {
+              privateroute.map((item, index) => {
+                return (
+                  <Route
+                    key={index}
+                    path={item.path}
+                    element={item.element}
+                  />
+                )
+              })
+            }
+
+            {/* <Route path="/service" element={<Service />} />
+            <Route path="/contact" element={<Contect />} />
+            <Route path="/counter" element={<Counter />} />
+            <Route path="/product" element={<ProductList />} />
+            <Route path="/product/:id" element={<ProductDetails />} /> */}
+          </Route>
+
+
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About />} />
-          <Route path="/service" element={<Service />} />
-          <Route path="/contact" element={<Contect />} />
-          <Route path="/counter" element={<Counter />} />
-          <Route path="/product" element={<ProductList />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/login" element={<Login />} />
           {/* <Route path="/ddddddd" element={<New />} /> */}
 
           <Route path="/*" element={<NotFound />} />

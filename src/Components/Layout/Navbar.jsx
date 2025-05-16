@@ -4,6 +4,16 @@ import { NavLink } from 'react-router-dom';
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const auth = JSON.parse(localStorage.getItem("auth"))
+
+  function Logout() {
+    if (auth) {
+      localStorage.removeItem("auth");
+      alert("Logout Successfull");
+      window.location.reload();
+
+    }
+  }
 
   return (
     <nav className="bg-white shadow-md">
@@ -63,8 +73,10 @@ const Navbar = () => {
               </NavLink>
             </div>
 
-            <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition">
-              Submit
+            <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition"
+              onClick={Logout}
+            >
+              Logout
             </button>
           </div>
         </div>
