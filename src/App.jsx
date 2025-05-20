@@ -1,4 +1,4 @@
-import { useCallback, useId, useMemo, useRef, useState } from "react";
+import { createContext, useCallback, useId, useMemo, useRef, useState } from "react";
 import Home from "./pages/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/Home";
@@ -14,6 +14,11 @@ import New from "./pages/New";
 import Login from "./Components/Auth/Login";
 import PrativeRoute from "./Components/PrativeRoute";
 import Signup from "./Components/Auth/Signup";
+import { useContext } from "react";
+import { UserProvider } from "./UserDetails";
+
+
+export const ThemeContext = createContext(null);
 
 function App() {
   // const apidata = fetch("https://jsonplaceholder.typicode.com/todos/1")
@@ -41,6 +46,7 @@ function App() {
 
   // console.log("callback", callback());
 
+
   const [counter, setcounter] = useState(0);
   function callback() {
     setcounter((prev) => prev + 1);
@@ -57,10 +63,10 @@ function App() {
 
   const privateroute = [
 
-    {
-      path: "/service",
-      element: <Service />,
-    },
+    // {
+    //   path: "/service",
+    //   element: <Service />,
+    // },
     {
       path: "/contact",
       element: <Contect />,
@@ -79,50 +85,71 @@ function App() {
     }
   ];
 
+  const data = {
+    name: "John",
+    age: 30,
+    phone: 234543
+  }
+
+
 
   return (
     <>
       {/* <Home /> */}
-
-      <BrowserRouter>
-        <Navbar setAuth={setAuth} />
-        <Routes >
+      <ThemeContext.Provider value={data} >
+        <UserProvider>
 
 
-          <Route element={<PrativeRoute auth={auth} />}>
-            {
-              privateroute.map((item, index) => {
-                return (
-                  <Route
-                    key={index}
-                    path={item.path}
-                    element={item.element}
-                  />
-                )
-              })
-            }
 
-            {/* <Route path="/service" element={<Service />} />
+          <BrowserRouter>
+            <Navbar setAuth={setAuth} />
+
+            <Routes >
+              <Route element={<PrativeRoute auth={auth} />}>
+                {
+                  privateroute.map((item, index) => {
+                    return (
+                      <Route
+                        key={index}
+                        path={item.path}
+                        element={item.element}
+                      />
+                    )
+                  })
+                }
+
+                {/* <Route path="/service" element={<Service />} />
             <Route path="/contact" element={<Contect />} />
             <Route path="/counter" element={<Counter />} />
             <Route path="/product" element={<ProductList />} />
             <Route path="/product/:id" element={<ProductDetails />} /> */}
-          </Route>
+              </Route>
 
 
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<About />} />
-          {/* <Route path="/ddddddd" element={<New />} /> */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/service" element={<Service />} />
+              {/* <Route path="/ddddddd" element={<New />} /> */}
 
-          <Route path="/*" element={<NotFound />} />
+              <Route path="/*" element={<NotFound />} />
 
-        </Routes>
-        {/* <Home /> */}
-      </BrowserRouter>
+            </Routes>
+            {/* <Home /> */}
+          </BrowserRouter>
+        </UserProvider >
+      </ThemeContext.Provider>
+
+
     </>
   );
+
+
 }
 
+
+
 export default App;
+
+

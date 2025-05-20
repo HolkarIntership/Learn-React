@@ -90,7 +90,7 @@ button:focus-visible {
 
 /* Product CSS  */
 
-.product-list{
+.product-list {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,7 +127,8 @@ button:focus-visible {
   font-size: 18px;
   margin: 0 0 10px;
 }
-.product-category{
+
+.product-category {
   font-weight: 700;
   color: #007bff;
   text-align: left;
@@ -166,4 +167,23 @@ button:focus-visible {
 
 .add-to-cart-btn:hover {
   background-color: #0056b3;
+}
+
+
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ff0088;
+  will-change: transform;
 }

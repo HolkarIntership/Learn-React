@@ -3,14 +3,14 @@ import { Navigate, Outlet, useNavigate } from 'react-router-dom'
 
 const PrativeRoute = () => {
 
-    const auth = JSON.parse(localStorage.getItem("auth"))
+  const auth = JSON.parse(localStorage.getItem("auth"))
 
   return (
     <div>
       {auth ? (
-       <Outlet />
+        <Outlet />
       ) : (
-     <Navigate to={'/login'} />
+        <Navigate to={'/login'} />
       )}
     </div>
   )

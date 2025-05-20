@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../UserDetails";
+import { ThemeContext } from "../App";
 
 const Service = () => {
 
@@ -10,8 +12,17 @@ const Service = () => {
     window.location.reload();
   }
 
+  const data = useContext(UserContext);
+
+const value = useContext(ThemeContext)
+  console.log(value,"val....");
+
   return (
     <div>
+
+      <h1>User Details: {value.name}, {value.age}, {value.phone}, {value.address}</h1>
+
+
       <h1>User Details </h1>
       <h2>name {userdata?.name} </h2>
       <h2>Age {userdata?.age}</h2>
@@ -24,6 +35,11 @@ const Service = () => {
       >
         Delete Account
       </button>
+
+      <br />
+      <br />
+      <br />
+      <h1>User Name : {data?.name}</h1>
 
     </div>
   );
